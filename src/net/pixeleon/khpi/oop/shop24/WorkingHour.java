@@ -1,4 +1,4 @@
-package net.pixeleon.khpi.shop24;
+package net.pixeleon.khpi.oop.shop24;
 
 public class WorkingHour extends AbstractWorkingHour{
 

@@ -1,6 +1,5 @@
-package net.pixeleon.khpi.shop24;
+package net.pixeleon.khpi.oop.shop24;
 
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public abstract class AbstractWorkingHour implements Comparable<AbstractWorkingHour>{
@@ -55,9 +54,7 @@ public abstract class AbstractWorkingHour implements Comparable<AbstractWorkingH
             return true;
         }
         //unnecessary 'obj == null' condition
-        if(!(obj instanceof AbstractWorkingHour)) {
-            return false;
-        }
+        if(!(obj instanceof AbstractWorkingHour)) return false;
         AbstractWorkingHour wh = (AbstractWorkingHour) obj;
         return  wh.getOclock() == getOclock() &&
                 wh.getCustomersNumber() == getCustomersNumber() &&
@@ -66,8 +63,8 @@ public abstract class AbstractWorkingHour implements Comparable<AbstractWorkingH
     }
 
     @Override
-    public int compareTo(AbstractWorkingHour wh) {
-        return -Integer.compare(getCustomersNumber(), wh.getCustomersNumber());
+    public int compareTo(AbstractWorkingHour hour) {
+        return -Integer.compare(getCustomersNumber(), hour.getCustomersNumber());
     }
 
     protected void testWorkingHour() {

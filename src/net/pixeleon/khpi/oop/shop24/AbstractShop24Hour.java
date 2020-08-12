@@ -1,4 +1,4 @@
-package net.pixeleon.khpi.shop24;
+package net.pixeleon.khpi.oop.shop24;
 
 import java.util.Arrays;
 
@@ -8,7 +8,7 @@ public abstract class AbstractShop24Hour {
     public abstract String getAddress();
     public abstract void setAddress(String address);
     public abstract AbstractWorkingHour[] getWorkingHours();
-    public abstract void setWorkingHours(AbstractWorkingHour[] workingHours);
+    public abstract void setWorkingHours(AbstractWorkingHour[] hours);
     public abstract AbstractWorkingHour getWorkingHour(int i);
     public abstract void setWorkingHour(int i, AbstractWorkingHour hour);
     public abstract boolean addWorkingHour(AbstractWorkingHour hour);
@@ -94,7 +94,7 @@ public abstract class AbstractShop24Hour {
             System.arraycopy(hours, 0, newHours, 0, hours.length);
         }
         else {
-            newHours = new  AbstractWorkingHour[1];
+            newHours = new AbstractWorkingHour[1];
         }
         newHours[newHours.length-1] = newHour;
         return newHours;
@@ -111,7 +111,6 @@ public abstract class AbstractShop24Hour {
             for(AbstractWorkingHour wh : result) {
                 System.out.println(wh);
             }
-
         }
     }
 
@@ -134,15 +133,14 @@ public abstract class AbstractShop24Hour {
 
         printWord("police");
         printWord("problem");
-        printWord("we");
 
         System.out.println(this);
         sortByCustomersNumberDesc();
-        System.out.println(this);
+        System.out.println("Sorted descending by customers number:\n" + this);
         sortByCommentsAsc();
-        System.out.println(this);
+        System.out.println("Sorted ascending by comments:\n" + this);
         sortByCommentsDesc();
-        System.out.println(this);
+        System.out.println("Sorted descending by comments:\n" + this);
 
 
 

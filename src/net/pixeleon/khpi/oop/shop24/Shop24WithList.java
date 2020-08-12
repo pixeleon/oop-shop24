@@ -1,4 +1,4 @@
-package net.pixeleon.khpi.shop24;
+package net.pixeleon.khpi.oop.shop24;
 
 import java.util.*;
 
@@ -7,7 +7,6 @@ public class Shop24WithList extends AbstractShop24Hour {
     private String name;
     private String address;
     private List<AbstractWorkingHour> workingHours = new ArrayList<>();
-
 
     @Override
     public String getName() {
@@ -35,8 +34,8 @@ public class Shop24WithList extends AbstractShop24Hour {
     }
 
     @Override
-    public void setWorkingHours(AbstractWorkingHour[] workingHours) {
-        this.workingHours = new ArrayList<>(Arrays.asList(workingHours));
+    public void setWorkingHours(AbstractWorkingHour[] hours) {
+        this.workingHours = new ArrayList<>(Arrays.asList(hours));
     }
 
     @Override
@@ -45,8 +44,8 @@ public class Shop24WithList extends AbstractShop24Hour {
     }
 
     @Override
-    public boolean addWorkingHour(AbstractWorkingHour wh) {
-        return workingHours.add(wh);
+    public boolean addWorkingHour(AbstractWorkingHour hour) {
+        return workingHours.add(hour);
     }
 
     @Override
@@ -55,8 +54,8 @@ public class Shop24WithList extends AbstractShop24Hour {
     }
 
     @Override
-    public void setWorkingHour(int i, AbstractWorkingHour wh) {
-        workingHours.set(i, wh);
+    public void setWorkingHour(int i, AbstractWorkingHour hour) {
+        workingHours.set(i, hour);
     }
 
     @Override
@@ -76,11 +75,11 @@ public class Shop24WithList extends AbstractShop24Hour {
 
     @Override
     public void sortByCommentsAsc() {
-        Collections.sort(workingHours, Comparator.comparing(AbstractWorkingHour::getComment));
+        Collections.sort(workingHours, (wh1,wh2) -> (wh1.getComment().compareTo(wh2.getComment())));
     }
 
     @Override
-    public void sortByCommentsDesc() {
+    public void  sortByCommentsDesc() {
         Collections.sort(workingHours, (wh1,wh2) -> (-wh1.getComment().compareTo(wh2.getComment())));
     }
 }

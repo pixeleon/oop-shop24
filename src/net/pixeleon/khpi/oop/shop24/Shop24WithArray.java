@@ -1,4 +1,4 @@
-package net.pixeleon.khpi.shop24;
+package net.pixeleon.khpi.oop.shop24;
 
 import java.util.Arrays;
 
@@ -33,8 +33,8 @@ public class Shop24WithArray extends AbstractShop24Hour{
     }
 
     @Override
-    public void setWorkingHours(AbstractWorkingHour[] workingHours) {
-        this.workingHours = workingHours;
+    public void setWorkingHours(AbstractWorkingHour[] hours) {
+        this.workingHours = hours;
     }
 
     @Override
@@ -43,15 +43,15 @@ public class Shop24WithArray extends AbstractShop24Hour{
     }
 
     @Override
-    public boolean addWorkingHour(AbstractWorkingHour workingHour) {
+    public boolean addWorkingHour(AbstractWorkingHour hour) {
         if(getWorkingHours() != null) {
             for (AbstractWorkingHour wh: getWorkingHours()) {
-                if(workingHour.equals(wh)) {
+                if(hour.getOclock() == wh.getOclock()) {
                     return false;
                 }
             }
         }
-        setWorkingHours(addToArray(getWorkingHours(), workingHour));
+        setWorkingHours(addToArray(getWorkingHours(), hour));
         return true;
     }
 
@@ -62,8 +62,8 @@ public class Shop24WithArray extends AbstractShop24Hour{
     }
 
     @Override
-    public void setWorkingHour(int i, AbstractWorkingHour wh) {
-        workingHours[i] = wh;
+    public void setWorkingHour(int i, AbstractWorkingHour hour) {
+        workingHours[i] = hour;
     }
 
     @Override
