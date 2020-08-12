@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shop24Data Name="Yizhak" Address="Likvidatoriv str. 31">
+    <WorkingHourData Oclock="9" CustomersNumber="10" Comment="nothing interesting"/>
+    <WorkingHourData Oclock="12" CustomersNumber="22" Comment="some vietnamese people tried to buy something"/>
+    <WorkingHourData Oclock="15" CustomersNumber="43" Comment="10 eggs were broken by accident"/>
+    <WorkingHourData Oclock="18" CustomersNumber="20" Comment="hot!"/>
+    <WorkingHourData Oclock="21" CustomersNumber="20" Comment="police passed by"/>
+    <WorkingHourData Oclock="24" CustomersNumber="8" Comment="children tried to buy some vodka"/>
+</Shop24Data>
