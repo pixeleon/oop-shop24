@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.pixeleon.khpi.oop.shop24.gui.Shop24Controller">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open..." />
+                  <MenuItem mnemonicParsing="false" text="Save..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Add new row" />
+                  <MenuItem mnemonicParsing="false" text="Remove last row" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Run">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Sort by customers number" />
+                  <MenuItem mnemonicParsing="false" text="Sort by comments" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Name:" />
+            <TextField fx:id="textFieldName" />
+            <Label text="Address:" />
+            <TextField fx:id="textFieldAddress" />
+            <Label text="Text for search in comments:" />
+            <TextField fx:id="textFieldText" />
+            <Button fx:id="buttonSearchWord" mnemonicParsing="false" text="Search word" />
+            <Button fx:id="buttonSearchSubstring" mnemonicParsing="false" text="Search substring" />
+            <TextArea fx:id="textAreaResults" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </left>
+   <center>
+      <TableView fx:id="tableViewWorkingHours" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="tableColumnOclock" prefWidth="75.0" text="O'clock" />
+          <TableColumn fx:id="tableColumnCustomersNumber" prefWidth="75.0" text="Customers" />
+            <TableColumn fx:id="tableColumnComment" resizable="false" text="Comment" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>
