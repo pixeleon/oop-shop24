@@ -50,8 +50,7 @@ public class XMLShop24 extends AbstractShop24Hour implements FileIO {
     @Override
     public void setWorkingHours(AbstractWorkingHour[] hours) {
         clearWorkingHours();
-        for (AbstractWorkingHour wh :
-                hours) {
+        for (AbstractWorkingHour wh : hours) {
             addWorkingHour(wh);
         }
     }
@@ -131,7 +130,9 @@ public class XMLShop24 extends AbstractShop24Hour implements FileIO {
         return shop24Data.getWorkingHourData().get(i);
     }
 
-    public void setWorkingHourData(int i, Shop24Data.WorkingHourData hourData) { shop24Data.getWorkingHourData().set(i, hourData);}
+    public void setWorkingHourData(int i, Shop24Data.WorkingHourData hourData) {
+        shop24Data.getWorkingHourData().set(i, hourData);
+    }
 
     public static void main(String[] args) {
         XMLShop24 shop = new XMLShop24();

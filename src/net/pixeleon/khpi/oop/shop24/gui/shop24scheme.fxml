@@ -1,53 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.pixeleon.khpi.oop.shop24.gui.Shop24Controller">
+
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.pixeleon.khpi.oop.shop24.gui.Shop24Controller">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open..." />
-                  <MenuItem mnemonicParsing="false" text="Save..." />
+              <MenuItem mnemonicParsing="false" onAction="#doNew" text="New" />
+                  <MenuItem mnemonicParsing="false" onAction="#doOpen" text="Open..." />
+                  <MenuItem mnemonicParsing="false" onAction="#doSave" text="Save..." />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Exit" />
+                  <MenuItem mnemonicParsing="false" onAction="#doExit" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Add new row" />
-                  <MenuItem mnemonicParsing="false" text="Remove last row" />
+              <MenuItem mnemonicParsing="false" onAction="#doAddRow" text="Add new row" />
+                  <MenuItem mnemonicParsing="false" onAction="#doRemoveRow" text="Remove last row" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Run">
               <items>
-                <MenuItem mnemonicParsing="false" text="Sort by customers number" />
-                  <MenuItem mnemonicParsing="false" text="Sort by comments" />
+                <MenuItem mnemonicParsing="false" onAction="#doSortByCustomersNumber" text="Sort by customers number" />
+                  <MenuItem mnemonicParsing="false" onAction="#doSortByComments" text="Sort by comments" />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#doAbout" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
    </top>
    <left>
-      <VBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Name:" />
-            <TextField fx:id="textFieldName" />
-            <Label text="Address:" />
-            <TextField fx:id="textFieldAddress" />
+            <Label text="Shop name:" />
+            <TextField fx:id="textFieldName" onAction="#nameChanged" />
+            <Label text="Shop address:" />
+            <TextField fx:id="textFieldAddress" onAction="#addressChanged" />
             <Label text="Text for search in comments:" />
             <TextField fx:id="textFieldText" />
-            <Button fx:id="buttonSearchWord" mnemonicParsing="false" text="Search word" />
-            <Button fx:id="buttonSearchSubstring" mnemonicParsing="false" text="Search substring" />
-            <TextArea fx:id="textAreaResults" prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="buttonSearchWord" mnemonicParsing="false" onAction="#doSearchWord" text="Search word in comments" />
+            <Button fx:id="buttonSearchSubstring" mnemonicParsing="false" onAction="#doSearchSubstring" text="Search substring in comments" />
+            <TextArea fx:id="textAreaResults" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
          </children>
          <BorderPane.margin>
             <Insets />
@@ -58,11 +59,11 @@
       </VBox>
    </left>
    <center>
-      <TableView fx:id="tableViewWorkingHours" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableViewWorkingHours" editable="true" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="tableColumnOclock" prefWidth="75.0" text="O'clock" />
-          <TableColumn fx:id="tableColumnCustomersNumber" prefWidth="75.0" text="Customers" />
-            <TableColumn fx:id="tableColumnComment" resizable="false" text="Comment" />
+          <TableColumn fx:id="tableColumnOclock" prefWidth="100.0" text="O'clock" />
+          <TableColumn fx:id="tableColumnCustomersNumber" prefWidth="100.0" text="Customers" />
+            <TableColumn fx:id="tableColumnComment" prefWidth="200.0" text="Comment" />
         </columns>
       </TableView>
    </center>
