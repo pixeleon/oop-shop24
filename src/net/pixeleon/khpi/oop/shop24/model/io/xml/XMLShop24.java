@@ -97,18 +97,18 @@ public class XMLShop24 extends AbstractShop24Hour implements FileIO {
 
     @Override
     public void sortByCustomersNumberDesc() {
-        Collections.sort(shop24Data.getWorkingHourData(), (wh1, wh2) ->
-                (-Integer.compare(wh1.getCustomersNumber(),wh2.getCustomersNumber())));
+        shop24Data.getWorkingHourData().sort((wh1, wh2) ->
+                (-Integer.compare(wh1.getCustomersNumber(), wh2.getCustomersNumber())));
     }
 
     @Override
     public void sortByCommentsAsc() {
-        Collections.sort(shop24Data.getWorkingHourData(), (wh1,wh2) -> (wh1.getComment().compareTo(wh2.getComment())));
+        shop24Data.getWorkingHourData().sort((wh1, wh2) -> (wh1.getComment().compareTo(wh2.getComment())));
     }
 
     @Override
     public void sortByCommentsDesc() {
-        Collections.sort(shop24Data.getWorkingHourData(), (wh1,wh2) -> (-wh1.getComment().compareTo(wh2.getComment())));
+        shop24Data.getWorkingHourData().sort((wh1, wh2) -> (-wh1.getComment().compareTo(wh2.getComment())));
     }
 
     @Override

@@ -75,11 +75,11 @@ public class Shop24WithList extends AbstractShop24Hour {
 
     @Override
     public void sortByCommentsAsc() {
-        Collections.sort(workingHours, (wh1,wh2) -> (wh1.getComment().compareTo(wh2.getComment())));
+        workingHours.sort((wh1, wh2) -> (wh1.getComment().compareTo(wh2.getComment())));
     }
 
     @Override
     public void  sortByCommentsDesc() {
-        Collections.sort(workingHours, (wh1,wh2) -> (-wh1.getComment().compareTo(wh2.getComment())));
+        workingHours.sort((wh1, wh2) -> (-wh1.getComment().compareTo(wh2.getComment())));
     }
 }

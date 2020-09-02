@@ -6,57 +6,48 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.pixeleon.khpi.oop.shop24.controller.Shop24Controller">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#doNew" text="New" />
-                  <MenuItem mnemonicParsing="false" onAction="#doOpen" text="Open..." />
-                  <MenuItem mnemonicParsing="false" onAction="#doSave" text="Save..." />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#doExit" text="Exit" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#doAddRow" text="Add new row" />
-                  <MenuItem mnemonicParsing="false" onAction="#doRemoveRow" text="Remove last row" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Run">
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#doSortByCustomersNumber" text="Sort by customers number" />
-                  <MenuItem mnemonicParsing="false" onAction="#doSortByComments" text="Sort by comments" />
-              </items>
-            </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#doAbout" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+       <MenuBar BorderPane.alignment="CENTER">
+           <Menu mnemonicParsing="false" text="File">
+               <MenuItem mnemonicParsing="false" onAction="#doNew" text="New"/>
+               <MenuItem mnemonicParsing="false" onAction="#doOpen" text="Open..."/>
+               <MenuItem mnemonicParsing="false" onAction="#doSave" text="Save..."/>
+               <SeparatorMenuItem mnemonicParsing="false"/>
+               <MenuItem mnemonicParsing="false" onAction="#doExit" text="Exit"/>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Edit">
+               <MenuItem mnemonicParsing="false" onAction="#doAddRow" text="Add new row"/>
+               <MenuItem mnemonicParsing="false" onAction="#doRemoveRow" text="Remove last row"/>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Run">
+               <MenuItem mnemonicParsing="false" onAction="#doSortByCustomersNumber"
+                         text="Sort by customers number"/>
+               <MenuItem mnemonicParsing="false" onAction="#doSortByComments" text="Sort by comments"/>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Help">
+               <MenuItem mnemonicParsing="false" onAction="#doAbout" text="About"/>
+           </Menu>
+       </MenuBar>
    </top>
    <left>
-      <VBox spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Shop name:" />
-            <TextField fx:id="textFieldName" onAction="#nameChanged" />
-            <Label text="Shop address:" />
-            <TextField fx:id="textFieldAddress" onAction="#addressChanged" />
-            <Label text="Text for search in comments:" />
-            <TextField fx:id="textFieldText" />
-            <Button fx:id="buttonSearchWord" mnemonicParsing="false" onAction="#doSearchWord" text="Search word in comments" />
-            <Button fx:id="buttonSearchSubstring" mnemonicParsing="false" onAction="#doSearchSubstring" text="Search substring in comments" />
-            <TextArea fx:id="textAreaResults" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </VBox>
+       <VBox spacing="10.0" BorderPane.alignment="CENTER">
+           <BorderPane.margin>
+               <Insets/>
+           </BorderPane.margin>
+           <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+           </padding>
+           <Label text="Shop name:"/>
+           <TextField fx:id="textFieldName" onAction="#nameChanged"/>
+           <Label text="Shop address:"/>
+           <TextField fx:id="textFieldAddress" onAction="#addressChanged"/>
+           <Label text="Text for search in comments:"/>
+           <TextField fx:id="textFieldText"/>
+           <Button fx:id="buttonSearchWord" mnemonicParsing="false" onAction="#doSearchWord"
+                   text="Search word in comments"/>
+           <Button fx:id="buttonSearchSubstring" mnemonicParsing="false" onAction="#doSearchSubstring"
+                   text="Search substring in comments"/>
+           <TextArea fx:id="textAreaResults" prefHeight="200.0" prefWidth="200.0" wrapText="true"/>
+       </VBox>
    </left>
    <center>
       <TableView fx:id="tableViewWorkingHours" editable="true" BorderPane.alignment="CENTER">

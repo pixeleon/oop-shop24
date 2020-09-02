@@ -46,8 +46,7 @@ public class TextFileShop24 extends Shop24WithList implements FileIO{
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (InputMismatchException e) {
+        } catch (InputMismatchException e) {
             e.printStackTrace();
         }
     }

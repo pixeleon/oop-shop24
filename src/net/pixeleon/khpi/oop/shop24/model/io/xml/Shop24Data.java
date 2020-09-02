@@ -80,7 +80,7 @@ public class Shop24Data {
      */
     public List<Shop24Data.WorkingHourData> getWorkingHourData() {
         if (workingHourData == null) {
-            workingHourData = new ArrayList<Shop24Data.WorkingHourData>();
+            workingHourData = new ArrayList<>();
         }
         return this.workingHourData;
     }
