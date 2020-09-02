@@ -1,8 +1,6 @@
 package net.pixeleon.khpi.oop.shop24.controller;
 
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -11,15 +9,12 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 import javafx.util.converter.IntegerStringConverter;
 import net.pixeleon.khpi.oop.shop24.model.AbstractWorkingHour;
-import net.pixeleon.khpi.oop.shop24.model.io.xml.XMLShop24;
+import net.pixeleon.khpi.oop.shop24.model.Shop24Facade;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Shop24Controller implements Initializable {
@@ -34,8 +29,9 @@ public class Shop24Controller implements Initializable {
     public TableColumn<AbstractWorkingHour, Integer> tableColumnOclock;
     public TableColumn<AbstractWorkingHour, Integer> tableColumnCustomersNumber;
     public TableColumn<AbstractWorkingHour, String> tableColumnComment;
-    private XMLShop24 shop = new XMLShop24();
-    private ObservableList<AbstractWorkingHour> observableHoursList;
+    //private XMLShop24 shop = new XMLShop24();
+    //private ObservableList<AbstractWorkingHour> observableHoursList;
+    private final Shop24Facade facade = Shop24Facade.getInstance();
 
     private FileChooser getFileChooser(String title) {
         FileChooser fileChooser = new FileChooser();
@@ -66,17 +62,10 @@ public class Shop24Controller implements Initializable {
         tableViewWorkingHours.setPlaceholder(new Label(""));
     }
 
-    private void updateData() {
-        shop.clearWorkingHours();
-        for (AbstractWorkingHour wh : observableHoursList) {
-            shop.addWorkingHour(wh);
-        }
-    }
-
     private void updateTable() {
-        List<AbstractWorkingHour> hoursList = new ArrayList<>(Arrays.asList(shop.getWorkingHours()));
-        observableHoursList = FXCollections.observableList(hoursList);
-        tableViewWorkingHours.setItems(observableHoursList);
+        facade.updateObservableHoursList();
+
+        tableViewWorkingHours.setItems(facade.getObservableHoursList());
 
         tableColumnOclock.setCellValueFactory(new PropertyValueFactory<>("oclock"));
         tableColumnOclock.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -89,24 +78,26 @@ public class Shop24Controller implements Initializable {
         tableColumnComment.setOnEditCommit(this::updateComment);
     }
 
+    //
     private void updateComment(TableColumn.CellEditEvent<AbstractWorkingHour, String> t) {
         AbstractWorkingHour hour = t.getTableView().getItems().get(t.getTablePosition().getRow());
         hour.setComment(t.getNewValue());
     }
 
+    //
     private void updateCustomersNumber(TableColumn.CellEditEvent<AbstractWorkingHour, Integer> t) {
         AbstractWorkingHour hour = t.getTableView().getItems().get(t.getTablePosition().getRow());
         hour.setCustomersNumber(t.getNewValue());
     }
 
+    //
     private void updateOclock(TableColumn.CellEditEvent<AbstractWorkingHour, Integer> t) {
         AbstractWorkingHour hour = t.getTableView().getItems().get(t.getTablePosition().getRow());
         hour.setOclock(t.getNewValue());
     }
 
     public void doNew(ActionEvent actionEvent) {
-        shop = new XMLShop24();
-        observableHoursList = null;
+        facade.doNew();
         textFieldName.setText("");
         textFieldAddress.setText("");
         textFieldText.setText("");
@@ -120,9 +111,9 @@ public class Shop24Controller implements Initializable {
             FileChooser fileChooser = getFileChooser("Load data from XML file");
             File fileIn = fileChooser.showOpenDialog(null);
             if (fileIn != null) {
-                shop.readFromFile(fileIn.getCanonicalPath());
-                textFieldName.setText(shop.getName());
-                textFieldAddress.setText(shop.getAddress());
+                facade.readFromFile(fileIn.getCanonicalPath());
+                textFieldName.setText(facade.getName());
+                textFieldAddress.setText(facade.getAddress());
                 textAreaResults.setText("");
                 updateTable();
             }
@@ -138,8 +129,7 @@ public class Shop24Controller implements Initializable {
             FileChooser fileChooser = getFileChooser("Save data to XML file");
             File fileOut = fileChooser.showSaveDialog(null);
             if (fileOut != null) {
-                updateData();
-                shop.writeToFile(fileOut.getName());
+                facade.writeToFile(fileOut.getName());
                 showMessage("Successfully saved!");
             }
         } catch (JAXBException e) {
@@ -154,30 +144,21 @@ public class Shop24Controller implements Initializable {
     }
 
     public void doAddRow(ActionEvent actionEvent) {
-        shop.addWorkingHour(0, 0, "");
+        facade.addWorkingHour(0, 0, "");
         updateTable();
     }
 
     public void doRemoveRow(ActionEvent actionEvent) {
-        if (observableHoursList == null) {
-            return;
-        }
-        if (observableHoursList.size() <= 0) {
-            observableHoursList = null;
-        } else {
-            observableHoursList.remove(observableHoursList.size() - 1);
-        }
+        facade.doRemoveRow();
     }
 
     public void doSortByCustomersNumber(ActionEvent actionEvent) {
-        updateData();
-        shop.sortByCustomersNumberDesc();
+        facade.sortByCustomersNumberDesc();
         updateTable();
     }
 
     public void doSortByComments(ActionEvent actionEvent) {
-        updateData();
-        shop.sortByCommentsAsc();
+        facade.sortByCommentsAsc();
         updateTable();
     }
 
@@ -190,10 +171,10 @@ public class Shop24Controller implements Initializable {
     }
 
     public void doSearchWord(ActionEvent actionEvent) {
-        updateData();
+        facade.updateData();
         String word = textFieldText.getText();
         textAreaResults.setText("");
-        for (AbstractWorkingHour wh : shop.getWorkingHours()) {
+        for (AbstractWorkingHour wh : facade.getWorkingHours()) {
             if (wh.containsWord(word)) {
                 textAreaResults.appendText(wh.toString());
             }
@@ -201,10 +182,10 @@ public class Shop24Controller implements Initializable {
     }
 
     public void doSearchSubstring(ActionEvent actionEvent) {
-        updateData();
+        facade.updateData();
         String substring = textFieldText.getText();
         textAreaResults.setText("");
-        for (AbstractWorkingHour wh : shop.getWorkingHours()) {
+        for (AbstractWorkingHour wh : facade.getWorkingHours()) {
             if (wh.containsSubstring(substring)) {
                 textAreaResults.appendText(wh.toString());
             }
@@ -213,7 +194,7 @@ public class Shop24Controller implements Initializable {
 
     public void nameChanged(ActionEvent actionEvent) {
         try {
-            shop.setName(textFieldName.getText());
+            facade.setName(textFieldName.getText());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -221,7 +202,7 @@ public class Shop24Controller implements Initializable {
 
     public void addressChanged(ActionEvent actionEvent) {
         try {
-            shop.setAddress(textFieldAddress.getText());
+            facade.setAddress(textFieldAddress.getText());
         } catch (Exception e) {
             e.printStackTrace();
         }
