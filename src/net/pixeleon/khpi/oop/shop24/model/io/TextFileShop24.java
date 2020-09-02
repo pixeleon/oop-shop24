@@ -1,8 +1,8 @@
-package net.pixeleon.khpi.oop.shop24.io;
+package net.pixeleon.khpi.oop.shop24.model.io;
 
-import net.pixeleon.khpi.oop.shop24.AbstractWorkingHour;
-import net.pixeleon.khpi.oop.shop24.Shop24WithList;
-import net.pixeleon.khpi.oop.shop24.WorkingHour;
+import net.pixeleon.khpi.oop.shop24.model.AbstractWorkingHour;
+import net.pixeleon.khpi.oop.shop24.model.Shop24WithList;
+import net.pixeleon.khpi.oop.shop24.model.WorkingHour;
 
 import java.io.*;
 import java.util.InputMismatchException;

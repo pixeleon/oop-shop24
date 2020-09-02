@@ -1,7 +1,4 @@
-package net.pixeleon.khpi.oop.shop24.io;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
+package net.pixeleon.khpi.oop.shop24.model.io;
 
 public interface FileIO {
     void readFromFile(String fileName) throws Exception;

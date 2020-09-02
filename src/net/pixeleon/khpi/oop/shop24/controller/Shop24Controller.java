@@ -1,4 +1,4 @@
-package net.pixeleon.khpi.oop.shop24.gui;
+package net.pixeleon.khpi.oop.shop24.controller;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -10,8 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 import javafx.util.converter.IntegerStringConverter;
-import net.pixeleon.khpi.oop.shop24.AbstractWorkingHour;
-import net.pixeleon.khpi.oop.shop24.io.xml.XMLShop24;
+import net.pixeleon.khpi.oop.shop24.model.AbstractWorkingHour;
+import net.pixeleon.khpi.oop.shop24.model.io.xml.XMLShop24;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;

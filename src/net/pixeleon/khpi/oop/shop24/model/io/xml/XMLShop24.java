@@ -1,8 +1,8 @@
-package net.pixeleon.khpi.oop.shop24.io.xml;
+package net.pixeleon.khpi.oop.shop24.model.io.xml;
 
-import net.pixeleon.khpi.oop.shop24.AbstractShop24Hour;
-import net.pixeleon.khpi.oop.shop24.AbstractWorkingHour;
-import net.pixeleon.khpi.oop.shop24.io.FileIO;
+import net.pixeleon.khpi.oop.shop24.model.AbstractShop24Hour;
+import net.pixeleon.khpi.oop.shop24.model.AbstractWorkingHour;
+import net.pixeleon.khpi.oop.shop24.model.io.FileIO;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -113,14 +113,14 @@ public class XMLShop24 extends AbstractShop24Hour implements FileIO {
 
     @Override
     public void readFromFile(String fileName) throws JAXBException, FileNotFoundException {
-        JAXBContext jaxbContext = JAXBContext.newInstance("net.pixeleon.khpi.oop.shop24.io.xml");
+        JAXBContext jaxbContext = JAXBContext.newInstance("net.pixeleon.khpi.oop.shop24.model.io.xml");
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         shop24Data = (Shop24Data) unmarshaller.unmarshal(new FileReader(fileName));
     }
 
     @Override
     public void writeToFile(String fileName) throws JAXBException, IOException {
-        JAXBContext jaxbContext = JAXBContext.newInstance("net.pixeleon.khpi.oop.shop24.io.xml");
+        JAXBContext jaxbContext = JAXBContext.newInstance("net.pixeleon.khpi.oop.shop24.model.io.xml");
         Marshaller marshaller = jaxbContext.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         marshaller.marshal(shop24Data, new FileWriter(fileName));

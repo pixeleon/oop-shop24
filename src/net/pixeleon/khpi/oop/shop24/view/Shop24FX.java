@@ -1,4 +1,4 @@
-package net.pixeleon.khpi.oop.shop24.gui;
+package net.pixeleon.khpi.oop.shop24.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

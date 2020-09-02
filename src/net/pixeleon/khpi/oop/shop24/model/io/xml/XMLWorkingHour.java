@@ -1,6 +1,6 @@
-package net.pixeleon.khpi.oop.shop24.io.xml;
+package net.pixeleon.khpi.oop.shop24.model.io.xml;
 
-import net.pixeleon.khpi.oop.shop24.AbstractWorkingHour;
+import net.pixeleon.khpi.oop.shop24.model.AbstractWorkingHour;
 
 public class XMLWorkingHour extends AbstractWorkingHour {
     private Shop24Data.WorkingHourData workingHourData;

@@ -1,5 +1,5 @@
 
-package net.pixeleon.khpi.oop.shop24.io.xml;
+package net.pixeleon.khpi.oop.shop24.model.io.xml;
 
 import java.util.ArrayList;
 import java.util.List;

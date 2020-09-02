@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.pixeleon.khpi.oop.shop24.gui.Shop24Controller">
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.pixeleon.khpi.oop.shop24.controller.Shop24Controller">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
