@@ -26,20 +26,8 @@ public class Shop24Facade {
         return instance;
     }
 
-    public XMLShop24 getShop() {
-        return shop;
-    }
-
-    public void setShop(XMLShop24 shop) {
-        this.shop = shop;
-    }
-
     public ObservableList<AbstractWorkingHour> getObservableHoursList() {
         return observableHoursList;
-    }
-
-    public void setObservableHoursList(ObservableList<AbstractWorkingHour> observableHoursList) {
-        this.observableHoursList = observableHoursList;
     }
 
     public void doNew() {
