@@ -35,6 +35,7 @@ public class Shop24Controller implements Initializable {
 
     private FileChooser getFileChooser(String title) {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(title);
         fileChooser.setInitialDirectory(new File("."));
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml"));
